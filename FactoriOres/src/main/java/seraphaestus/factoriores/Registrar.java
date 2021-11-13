@@ -163,8 +163,8 @@ public class Registrar {
 		
 		//Vanilla Ores
 		oreTemplates.add(new OreTemplate("coal", "minecraft:coal", GenDistance.NEAR));
-		oreTemplates.add(new OreTemplate("iron", "minecraft:iron_nugget", GenDistance.NEAR));
-		oreTemplates.add(new OreTemplate("gold", "minecraft:gold_nugget", GenDistance.MID));
+		oreTemplates.add(new OreTemplate("iron", "create:crushed_iron_ore", GenDistance.NEAR));
+		oreTemplates.add(new OreTemplate("gold", "create:crushed_gold_ore", GenDistance.MID));
 		oreTemplates.add(new OreTemplate("diamond", "minecraft:diamond", GenDistance.DISABLED));
 		oreTemplates.add(new OreTemplate("emerald", "minecraft:emerald", GenDistance.DISABLED));
 		oreTemplates.add(new OreTemplate("redstone", "minecraft:redstone", GenDistance.MID));

@@ -8,7 +8,8 @@ import com.simibubi.create.content.AllSections;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.ponder.PonderRegistry;
-import com.simibubi.create.foundation.ponder.PonderRegistry.MultiSceneBuilder;
+import com.simibubi.create.foundation.ponder.PonderRegistrationHelper;
+import com.simibubi.create.foundation.ponder.PonderRegistrationHelper.MultiSceneBuilder;
 import com.simibubi.create.foundation.ponder.content.PonderTag;
 import com.simibubi.create.repack.registrate.util.NonNullLazyValue;
 import com.simibubi.create.repack.registrate.util.entry.BlockEntry;
@@ -32,8 +33,9 @@ public class CreateRegistrar {
 	// -------- Register
 	
 	public static final NonNullLazyValue<CreateRegistrate> createRegistrate = CreateRegistrate.lazy(FactoriOres.MOD_ID);
-	private static final CreateRegistrate subRegistrate = createRegistrate.get().itemGroup(() -> StartupCommon.ITEM_GROUP);
-	
+	private static final CreateRegistrate subRegistrate = createRegistrate.getValue().itemGroup(() -> StartupCommon.ITEM_GROUP);
+
+
 	// -------- Blocks with tile entities
 	
 	public static BlockEntry<BlockMechanicalMiner> blockMechanicalMiner = subRegistrate
@@ -59,14 +61,15 @@ public class CreateRegistrar {
 	
 	@OnlyIn(Dist.CLIENT)
 	public static void registerPondering() {
-		MultiSceneBuilder msb = PonderRegistry.forComponents(blockMechanicalMiner)
-			.addStoryBoard("mechanical_miner", PonderScenes::mechanicalMiner, PonderTag.KINETIC_APPLIANCES);
+		MultiSceneBuilder msb = new PonderRegistrationHelper(FactoriOres.MOD_ID)
+				.forComponents(blockMechanicalMiner)
+				.addStoryBoard("mechanical_miner", PonderScenes::mechanicalMiner, PonderTag.KINETIC_APPLIANCES);
 		if (ConfigHandler.CLIENT.enableLixiviantPonder.get())
 			msb.addStoryBoard("mechanical_miner_lixiviant", PonderScenes::mechanicalMinerLixiviant);
 		if (ConfigHandler.CLIENT.enableFluidMiningPonder.get())
 			msb.addStoryBoard("mechanical_miner_fluid_deposits", PonderScenes::mechanicalMinerFluidDeposits);
 		
-		PonderRegistry.tags.forTag(PonderTag.KINETIC_APPLIANCES).add(blockMechanicalMiner);
+		PonderRegistry.TAGS.forTag(PonderTag.KINETIC_APPLIANCES).add(blockMechanicalMiner);
 	}
 
 }

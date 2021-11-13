@@ -12,9 +12,9 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.1'
+version = '1.0'
 group = 'seraphaestus.factoriores'
-archivesBaseName = 'factoriores'
+archivesBaseName = 'factoriores_reforked'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // target Java 8, which is what Mojang ships to end users
 
@@ -87,9 +87,10 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.1.0'
-	
-	compileOnly fg.deobf("curse.maven:create-328085:3278516")
+    minecraft 'net.minecraftforge:forge:1.16.5-36.2.8'
+
+    compile fg.deobf("curse.maven:create-328085:3499718")
+    compile fg.deobf("curse.maven:flywheel-486392:3459739")
 	
     compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:1.16-3.1.3-21:api")
     runtimeOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:1.16-3.1.3-21")

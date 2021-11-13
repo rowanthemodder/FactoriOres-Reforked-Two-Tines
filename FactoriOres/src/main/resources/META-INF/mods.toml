@@ -5,8 +5,8 @@ license="MIT"
 [[mods]]
 modId="factoriores"
 version="${file.jarVersion}"
-displayName="FactoriOres"
-authors="Seraphaestus"
+displayName="FactoriOres Reforked"
+authors="Ajaxo"
 description='''
 Factoriores is a mod that adds ores and miners inspired by the game Factorio
 '''
@@ -27,7 +27,7 @@ Factoriores is a mod that adds ores and miners inspired by the game Factorio
     
 [[dependencies.factoriores]]
     modId="create"
-    mandatory=false
+    mandatory=true
     versionRange="[mc1.16.5_v0.3.1,)"
     ordering="NONE"
     side="BOTH"

@@ -72,6 +72,7 @@ public class ConfigHandler {
 		public final ForgeConfigSpec.BooleanValue canPlaceAdjacent;
 		
 		public final ForgeConfigSpec.BooleanValue worldgenEnabled;
+		public final ForgeConfigSpec.BooleanValue worldgenDefault;
 		public final ForgeConfigSpec.IntValue genDistanceNear;
 		public final ForgeConfigSpec.IntValue genDistanceMid;
 		public final ForgeConfigSpec.IntValue genDistanceFar;
@@ -142,6 +143,10 @@ public class ConfigHandler {
 			builder.pop();
 			
 			builder.push("worldgen");
+			worldgenDefault = builder
+					.comment("Set this to true to disable vanilla ore worldgen.")
+					.define("worldgenDefault", true);
+
 			worldgenEnabled = builder
 					.comment("Set this to false to disable ore worldgen. More fine-tuned customization should be done with datapacks.")
 					.define("worldgen", true);
